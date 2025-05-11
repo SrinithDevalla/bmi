@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Traffic Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>🚦 Traffic Analysis Dashboard</h1>
+
+        <h3 class="mt-4">Traffic Heatmap</h3>
+        <iframe src="{{ url_for('static', filename='traffic_heatmap.html') }}" width="100%" height="400"></iframe>
+
+
+        <h3 class="mt-4">Peak Traffic Hours</h3>
+        {{ graph1|safe }}
+
+        <h3 class="mt-4">Traffic Clusters</h3>
+        {{ graph2|safe }}
+
+        <h3 class="mt-4">Anomaly Detection</h3>
+        {{ graph3|safe }}
+
+        <h3 class="mt-4">Sample Data Table</h3>
+        {{ df_table|safe }}
+
+        <h2 class="mt-4">LSTM Traffic Forecast</h2>
+<img src="{{ url_for('static', filename='forecast_plot.png') }}" class="img-fluid"/>
+
+<h2 class="mt-4">Flyover Suggestions (High-Density Points)</h2>
+{{ flyovers | safe }}
+<h2 class="mt-4">Road Widening Suggestions (Consistently High Traffic Areas)</h2>
+{{ road_widening | safe }}
+
+    </div>
+    
+</body>
+</html>
